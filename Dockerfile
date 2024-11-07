@@ -16,6 +16,8 @@ RUN apt-get -y update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists*
 
+RUN apt install ssh wget unzip -y > /dev/null 2>&1
+
 RUN wget -O localtonet.zip https://localtonet.com/download/localtonet-linux-x64.zip > /dev/null 2>&1
 RUN unzip localtonet.zip
 RUN chmod +x localtonet

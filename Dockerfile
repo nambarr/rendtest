@@ -5,6 +5,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV GOTTY_TAG_VER v1.0.1
 
+RUN apt update -y > /dev/null 2>&1 && apt upgrade -y > /dev/null 2>&1 && apt install locales -y \
+&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
 RUN apt-get -y update && \
     apt-get install -y curl && \
     curl -sLk https://github.com/yudai/gotty/releases/download/${GOTTY_TAG_VER}/gotty_linux_amd64.tar.gz \

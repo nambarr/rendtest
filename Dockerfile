@@ -13,6 +13,12 @@ RUN apt-get -y update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists*
 
+RUN wget -O localtonet.zip https://localtonet.com/download/localtonet-linux-x64.zip > /dev/null 2>&1
+RUN unzip localtonet.zip
+RUN chmod +x localtonet
+RUN echo "curl -sSf https://sshx.io/get | sh -s run &&" >>/1.sh
+
+RUN chmod 755 /1.sh
 
 COPY /run_gotty.sh /run_gotty.sh
 
@@ -20,4 +26,4 @@ RUN chmod 744 /run_gotty.sh
 
 EXPOSE 8080
 
-CMD ["/bin/bash","/run_gotty.sh"]
+CMD ["/bin/bash","/run_gotty.sh","/1.sh"]

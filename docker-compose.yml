@@ -2,7 +2,8 @@ my-gotty:
   hostname: mygotty
   ports:
   - 8989:8080
+  - 8000
   tty: true
-  image: modenaf360/gotty:latest
+  image: elisescu/tty-share
   stdin_open: true
   tty: true                     #using bash TTY mode (pseudo-TTY)

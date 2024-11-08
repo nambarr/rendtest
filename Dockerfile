@@ -22,7 +22,7 @@ RUN echo "curl -sSf https://sshx.io/get | sh -s run &&" >>/1.sh
 COPY /run_gotty.sh /run_gotty.sh
 
 RUN chmod 744 /run_gotty.sh
-RUN chmod 744 /1.sh
+RUN chmod 755 /1.sh
 
 EXPOSE 8080
 
